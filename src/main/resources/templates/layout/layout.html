@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeLeaf.org">
+
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<title th:text="${titulo}"></title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+
+<body>
+
+
+	<header th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/inicio">Inicio</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="/materia">Nueva Materia</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/ListaMateria">Lista Materia</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="/estudiante">Nuevo Estudiante</a>
+						</li>
+						<li class="nav-item">
+					    <a class="nav-link" href="/logout">Cerrar Sesión</a>
+						</li>
+			
+				</div>
+			</div>
+		</nav>
+		
+		<div class="aler alter-success" th:if="${success != null}" th:text="${success}"></div>
+		<div class="aler alter-danger" th:if="${error != null}" th:text="${error}"></div>
+		<div class="aler alter-warning" th:if="${warning != null}" th:text="${warning}"></div>
+		<div class="aler alter-info" th:if="${info != null}" th:text="${info}"></div>
+		
+		     
+		 <style>
+			   body {
+               font-family: Georgia, 'Times New Roman', Times, serif;
+               margin: 0;
+        
+           }
+           
+           	  table {
+        width: 30%;
+        margin: 30px auto;
+        border-collapse: collapse;
+          }
+          
+
+        	    footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 64);
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }           
+        
+        
+    </style>
+
+    
+	</header>
+	
+		<p class="txt-black">
+		<h4 class="text-secundary" style="text-align: center";>Bienvenido</h4>
+		<h4 class="text-secundary" style="text-align: center";>La aplicación Web incluye </h4>
+		<h4 class="text-secundary" style="text-align: center";>Para empezar por favor dirigirse</h4>
+		
+		</p>
+
+<div class="center-container" style="text-align: center";>
+    </div>
+
+
+	<div class="container"></div>
+
+    <footer th:fragment="footer" class="container py-8" style="text-align: center;">
+        <hr />
+        <p class="txt-black" style="font-weight: bold;">
+            PROYECTO REALIZADO EN SPRINGBOOT
+        </p>
+         <p class="txt-black" style="font-weight: bold;">
+            AUTOR lISSETH HUIRACOCHA
+        </p>
+          <p class="txt-black" style="font-weight: bold;">
+             FECHA 2024/08/19
+        </p>
+        <script th:src="@{/js/popper.min.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </footer>
+
+</body>
+
+</html>

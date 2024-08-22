@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<title>Registro de Usuario</title>
+<style>
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-input {
+    width: 20%;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+</style>
+<body style="text-align: center; background-color: rgb(140, 218, 255);">
+<div style="margin-top: 100px;">
+  <div class="container">
+    <h1 style="margin-bottom: 20px;">Registro de Usuario</h1>
+    <form th:action="@{/registro}" th:object="${usuario}" method="post" enctype="multipart/form-data">
+
+      <label class="form-label">Nombre de Usuario: <input type="text" th:field="*{nombreUsuario}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}" class="error"></div>
+      <label class="form-label">Contraseña: <input type="password" th:field="*{contrasena}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}" class="error"></div>
+      <label class="form-label">Nombre: <input type="text" th:field="*{nombre}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+      <label class="form-label">Apellido: <input type="text" th:field="*{apellido}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="error"></div>
+      <label class="form-label">Email: <input type="text" th:field="*{email}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>      
+      
+      <div>
+    <label for="rol">Rol:</label>
+    <select id="rol" th:field="*{rol}" required>
+        <option value="" disabled selected>Seleccione un rol</option>
+        <option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
+    </select>
+</div>
+
+    
+
+
+      <div class="mt-3 text-center">
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </div>
+
+      <div class="mt-3 text-center">
+        <a href="/login" class="btn btn-primary">Regresar al Login</a>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

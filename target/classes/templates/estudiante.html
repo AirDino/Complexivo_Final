@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<title>Registro de Estudiante</title>
+<style>
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-input {
+    width: 20%;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+</style>
+<body style="text-align: center; background-color: rgb(140, 218, 255);">
+<div style="margin-top: 100px;">
+  <div class="container">
+    <h1 style="margin-bottom: 20px;">Registro de Estudiante</h1>
+    <form th:action="@{/estudiante}" th:object="${estudiante}" method="post" enctype="multipart/form-data">
+
+      <label class="form-label">Cedula: <input type="text" th:field="*{cedula}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}" class="error"></div>
+      <label class="form-label">Nombre: <input type="text" th:field="*{nombre}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+      <label class="form-label">Apellido: <input type="text" th:field="*{apellido}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="error"></div>
+      <label class="form-label">Dirección: <input type="text" th:field="*{direccion}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></div>     
+      <label class="form-label">Fecha de Nacimiento: <input type="text" th:field="*{fecha_nacimiento}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}" class="error"></div>      
+      
+      <div>
+    <label for="materia">Materia:</label>
+    <select id="materia" th:field="*{materia}" required>
+        <option value="" disabled selected>Seleccione una materia</option>
+        <option th:each="materia : ${materias}" th:value="${materia.id}" th:text="${materia.nombre}"></option>
+    </select>
+</div>
+      
+      <div class="mt-3 text-center">
+        <button type="submit" class="btn btn-primary">Agregar Estudiante</button>
+      </div>
+ 	  <div class="mt-3 text-center">
+        <a href="/inicio" class="btn btn-primary">Regresar al Inicio</a>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

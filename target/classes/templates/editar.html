@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+
+  <div class="card bg-light">
+
+    <div class="card-header" th:text="${titulo}"></div>
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+
+      <form th:action="@{/guardarEdicion}" th:object="${estudiante}" method="post" enctype="multipart/form-data">
+        <table class="table table bordered">
+			    
+	<label>Cedula</label>
+    <input type="text" th:field="*{cedula}" class="form-control" />
+    <div th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}" class="error"></div>
+
+    <label>Nombre</label>
+    <input type="text" th:field="*{nombre}" class="form-control" />
+    <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+
+    <label>Apellido</label>
+    <input type="text" th:field="*{apellido}" class="form-control" />
+    <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="error"></div>
+
+    <label>Dirección</label>
+    <input type="text" th:field="*{direccion}" class="form-control" />
+    <div th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></div>
+    
+    <label>Fecha de Nacimiento</label>
+    <input type="text" th:field="*{fecha_nacimiento}" class="form-control" />
+    <div th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}" class="error"></div>
+
+          <input type="hidden" th:field="*{id}">
+
+
+          <tr>
+            <td><input type="submit" value="Guardar Cambios" class="btn btn-primary"></td>
+          </tr>
+          
+
+        </table>
+
+      </form>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+
+  <div class="card bg-light">
+
+    <div class="card-header" th:text="${titulo}"></div>
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+
+      <form th:action="@{/guardarEdicionMateria}" th:object="${materia}" method="post" enctype="multipart/form-data">
+        <table class="table table bordered">
+
+    <label>Nombre</label>
+    <input type="text" th:field="*{nombre}" class="form-control" />
+    <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+    
+          <input type="hidden" th:field="*{id}">
+
+
+          <tr>
+            <td><input type="submit" value="Guardar Cambios" class="btn btn-primary"></td>
+          </tr>
+          
+
+        </table>
+
+      </form>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+  </div>
+</body>
+</html>

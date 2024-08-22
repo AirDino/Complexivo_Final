@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<title>Registro de Materias</title>
+<style>
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-input {
+    width: 20%;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  
+</style>
+<body style="text-align: center; background-color: rgb(140, 218, 255);">
+<div style="margin-top: 100px;">
+  <div class="container">
+    <h1 style="margin-bottom: 20px;">Registro de Materias</h1>
+    <form th:action="@{/materia}" th:object="${materias}" method="post" enctype="multipart/form-data">
+
+   <label class="form-label">Nombre: <input type="text" th:field="*{nombre}" class="form-input" required /></label>
+      <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+       
+
+      <div class="mt-3 text-center">
+        <button type="submit" class="btn btn-primary">Agregar Materia</button>
+      </div>
+       <div class="mt-3 text-center">
+        <a href="/inicio" class="btn btn-primary">Regresar al Inicio</a>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<footer></footer>
+
+</body>
+</html>
